@@ -2,7 +2,6 @@
   <div id="background">
     <img :src="bg" alt="">
     <iframe src="/flower_fall.html" frameborder="0"></iframe>
-
   </div>
 </template>
 

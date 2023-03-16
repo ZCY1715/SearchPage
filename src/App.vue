@@ -3,6 +3,7 @@
     <Background />
     <div :class="$style.main">
       <Search />
+      <ExtLinks />
     </div>
   </div>
 </template>
@@ -10,6 +11,7 @@
 <script setup>
 import Background from './components/Background.vue'
 import Search from './components/Search.vue'
+import ExtLinks from './components/ExtLinks.vue'
 
 </script>
 

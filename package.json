@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "pinia": "^2.0.33",
+    "pinia-persistedstate-plugin": "^0.1.0",
     "vue": "^3.2.45"
   },
   "devDependencies": {
