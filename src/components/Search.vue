@@ -34,7 +34,7 @@ const favicon = computed(() => getFaviconAPI(searchUrls[index.value]))
 
 function search() {
   if (!searchValue.value) return
-  const url = searchUrls[index.value].url + searchValue.value
+  const url = searchUrls[index.value] + searchValue.value
   window.open(url, "_blank")
 }
 
