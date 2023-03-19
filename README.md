@@ -2,7 +2,7 @@
 
 ## 预览
 
-![example](./image-20230319121208004.png)
+![example](./doc/image-20230319121208004.png)
 
 👉 [点击这里](https://search.zcyblog.tk)
 
