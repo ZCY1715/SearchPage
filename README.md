@@ -29,3 +29,9 @@ vercel.json
 ```
 
 每周更新缓存一次，重新部署后可以`win + R`页面强制刷新
+
+## 配置为浏览器首页
+
+以 `chrome` 浏览器为例
+
+![ZCY_SearchPage](./doc/image-20230319122925565.png)
