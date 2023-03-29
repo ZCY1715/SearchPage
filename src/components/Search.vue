@@ -43,6 +43,7 @@ function search() {
 <style scoped>
 .container {
   position: relative;
+  margin-top: 50px;
   width: 90%;
   height: 50px;
   display: flex;

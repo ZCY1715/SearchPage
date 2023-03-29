@@ -1,7 +1,9 @@
 <template>
   <div :class="$style.container">
     <Background />
+
     <div :class="$style.main">
+      <Logo />
       <Search />
       <ExtLinks />
     </div>
@@ -12,6 +14,7 @@
 import Background from './components/Background.vue'
 import Search from './components/Search.vue'
 import ExtLinks from './components/ExtLinks.vue'
+import Logo from './components/Logo.vue'
 
 </script>
 
@@ -22,12 +25,12 @@ import ExtLinks from './components/ExtLinks.vue'
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+
 }
 
 .main {
   width: 800px;
-  height: 600px;
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
