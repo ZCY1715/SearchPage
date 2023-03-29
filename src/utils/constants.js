@@ -9,6 +9,9 @@ export const extLinks = [
     label: "ZCYBlog",
     url: "https://www.zcyblog.tk"
   },
-
+  {
+    label: "ToolPage",
+    url: "https://tools.zcyblog.tk"
+  },
 ]
 

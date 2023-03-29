@@ -4,8 +4,10 @@
       <img :src="getFaviconAPI(link.url)" alt="" @click="openLink(link.url)">
       <span class="name">{{ link.label }}</span>
       <span v-if="link.canEdit" class="edit">
-        <span @click="() => showEdit(link.index)">🖉</span>
-        <span @click="() => removeLink(link.index)">🗙</span>
+        <span @click="() => moveLeft(link.index)" title="左移">←</span>
+        <span @click="() => moveRight(link.index)" title="右移">→</span>
+        <span @click="() => showEdit(link.index)" title="编辑">🖉</span>
+        <span @click="() => removeLink(link.index)" title="删除">🗙</span>
       </span>
     </span>
     <span v-if="links.length < 32" class="linkItem" style="justify-content: center;font-size: 25px;"
@@ -50,9 +52,7 @@ const links = computed(() => [
   ...store.extLinks.map((e, index) => ({ ...e, canEdit: true, index }))
 ])
 
-const openLink = (url) => {
-  window.open(url, "_blank")
-}
+const openLink = (url) => window.open(url, "_blank")
 
 const saveLink = () => {
 
@@ -78,6 +78,10 @@ const saveLink = () => {
   showPanel.value = false
 }
 
+const moveLeft = (index) => store.moveLinkLeft(index)
+
+const moveRight = (index) => store.moveLinkRight(index)
+
 const showEdit = (index) => {
   editIndex.value = index
   newURL.value = store.extLinks[index].url
@@ -85,9 +89,9 @@ const showEdit = (index) => {
   showPanel.value = true
 }
 
-const removeLink = (index) => {
-  store.removeLink(index)
-}
+const removeLink = (index) => store.removeLink(index)
+
+const clickOutsideHandle = (e) => e.target === e.currentTarget && (showPanel.value = false)
 
 watch(showPanel, () => {
   if (!showPanel.value) {
@@ -97,11 +101,7 @@ watch(showPanel, () => {
   }
 })
 
-const clickOutsideHandle = (e) => {
-  if (e.target === e.currentTarget) {
-    showPanel.value = false
-  }
-}
+
 
 </script>
 
@@ -142,6 +142,9 @@ const clickOutsideHandle = (e) => {
 .linkItem .name {
   font-size: 14px;
   margin-top: 10px;
+  color: rgb(247, 248, 156);
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 1px #666, 2px 2px 2px #666;
 }
 
 .linkItem:hover .edit {
@@ -150,27 +153,30 @@ const clickOutsideHandle = (e) => {
 
 .edit {
   position: absolute;
-  right: 0;
-  top: -11px;
+  right: -11px;
+  top: 0;
   opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  transition: .3s;
 }
 
 .edit span {
   font-size: 16px;
   width: 22px;
   height: 22px;
+  border-radius: 50%;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.4);
-  margin-left: 3px;
-  transition: .2s;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: .3s;
+  color: #fff;
 }
 
 .edit span:hover {
   background-color: rgb(247, 180, 35);
-  color: #fff;
 
 }
 

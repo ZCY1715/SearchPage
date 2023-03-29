@@ -16,6 +16,26 @@ export default defineStore("store", {
     updateLink(index, url, label) {
       this.extLinks[index].url = url
       this.extLinks[index].label = label
+    },
+    moveLinkLeft(index) {
+      if (index <= 0) return
+      [
+        this.extLinks[index - 1],
+        this.extLinks[index]
+      ] = [
+          this.extLinks[index],
+          this.extLinks[index - 1]
+        ]
+    },
+    moveLinkRight(index) {
+      if (index >= this.extLinks.length - 1) return
+      [
+        this.extLinks[index],
+        this.extLinks[index + 1]
+      ] = [
+          this.extLinks[index + 1],
+          this.extLinks[index]
+        ]
     }
   },
   persist: {
