@@ -1,8 +1,8 @@
 <template>
   <div class="container" tabindex="0">
-    <img :src="favicon" alt="" tabindex="0" @click="nextFavicon">
-    <input type="text" v-model="searchValue" @keydown.enter="search">
-    <img :src="SearchPng" alt="" tabindex="0" @click="search">
+    <img class="img" :src="favicon" alt="" tabindex="0" @click="nextFavicon">
+    <input class="input" type="text" v-model="searchValue" @keydown.enter="search">
+    <img class="img" :src="SearchPng" alt="" tabindex="0" @click="search">
   </div>
 </template>
 
@@ -55,13 +55,13 @@ function search() {
   box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.2);
 }
 
-.container:has(input:focus, img:focus),
+.container:has(.input:focus, .img:focus),
 .container:focus {
   background-color: #fff;
   box-shadow: 3px 3px 3px rgba(255, 255, 255, 0.7);
 }
 
-input {
+.input {
   flex: 1;
   height: 100%;
   outline: 0;
@@ -71,9 +71,19 @@ input {
   font-size: 20px;
   margin: 0 20px 0 20px;
   cursor: pointer;
+  color: #fff;
+  transition: .3s;
+  caret-color: rgb(247, 180, 35);
 }
 
-img {
+.container:focus .input,
+.input:focus,
+.img:focus+.input,
+body:has(.img:focus) .input {
+  color: #000;
+}
+
+.img {
   aspect-ratio: 1;
   height: 50%;
   cursor: pointer;
